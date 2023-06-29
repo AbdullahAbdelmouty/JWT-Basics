@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+require("express-async-errors")
 const express = require("express");
 const mainRouter = require('./routers/main');
 const notFoundHandler = require('./middleware/not-found');
