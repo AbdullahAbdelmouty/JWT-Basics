@@ -1,5 +1,5 @@
 require('dotenv').config();
-// library to replace try and catch in the async function that used in controllers
+// package to replace try and catch in the async function that used in controllers
 require("express-async-errors")
 const express = require("express");
 const mainRouter = require('./routers/main');

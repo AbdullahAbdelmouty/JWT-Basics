@@ -1,5 +1,5 @@
 const { CustomAPIError } = require("../error/custom-error");
-
+const jwt = require("jsonwebtoken");
 const login = async (req,res)=>{
     const {username,password} = req.body;
     //to make vildation on data you can use one of three methodes
@@ -9,7 +9,9 @@ const login = async (req,res)=>{
     if(!username || !password){
         throw new CustomAPIError("Please provide name and password",400);
     }
-    res.send("Fake login or register")
+    const id = new Date().getDate();
+    const token = jwt.sign({id,username},process.env.JWT_SECRET,{expiresIn:"30d"});
+    res.status(200).json({msg:"user created",token});
 }
 const dashboard = async(req ,res)=>{
     const randomNumber = Math.floor(Math.random(100));
